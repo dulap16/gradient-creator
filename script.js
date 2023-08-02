@@ -146,9 +146,12 @@ function drawOneColorredColumn(x, y, height, color) {
     drawOneColumn(x, y, height);
 }
 
+function drawGradient() {
+    pen.clearRect(0, 0, canvas.width, canvas.height);
+    if (checkIfSliderChanged) {
+        updateHeightToSlider();
+    }
 
-function drawGradient(x, y, colors, height, length) {
-    console.log(length);
     let speed = calcSpeedFromHex(colors[0], colors[1], length);
     let current = hexToRGB(colors[0]);
 
@@ -157,14 +160,17 @@ function drawGradient(x, y, colors, height, length) {
 
         let formattedColor = new RGB(current.red, current.green, current.blue);
         formattedColor = formatColor(formattedColor);
-        drawOneColorredColumn(x + i, y, height, rgbToHex(formattedColor));
+        drawOneColorredColumn(x + i, y, currentHeight, rgbToHex(formattedColor));
     }
+
+    requestAnimationFrame(drawGradient);
 }
 
 
+
 function main() {
-    drawGradient(0, 0, colors, height, length);
     initAll();
+    drawGradient(0, 0, colors, currentHeight, length);
 }
 
 main();
