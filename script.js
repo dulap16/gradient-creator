@@ -95,3 +95,7 @@ function formatColor(color) {
     return newColor;
 }
 
+function setPenToColor(color) {
+    pen.strokeStyle = color;
+}
+
