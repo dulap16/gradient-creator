@@ -1,11 +1,46 @@
 const canvas = document.getElementById("canvas");
-const gradientPlaceholder = document.getElementById("gradient");
+const slider = document.getElementById("slider");
 const pen = canvas.getContext("2d");
-const gradientPos = gradientPlaceholder.getClientRects();
 
 let colors = [];
 colors[0] = "#ff0008";
 colors[1] = "#0022ff";
+const x = 0;
+const y = 0;
+let currentHeight = 50;
+const maxHeight = canvas.clientHeight;
+const length = canvas.clientWidth;
+
+
+
+function initAll() {
+    initCanvas();
+    initSlider();
+}
+
+function initCanvas() {
+    canvas.width = canvas.clientWidth;
+    canvas.height = canvas.clientHeight;
+
+    pen.lineWidth = 2;
+    pen.strokeStyle = "#ffffff";
+}
+
+function initSlider() {
+    slider.min = 0;
+    slider.max = maxHeight;
+    slider.value = currentHeight;
+}
+
+function checkIfSliderChanged() {
+    if (currentHeight != slider.value)
+        return true;
+    return false;
+}
+
+function updateHeightToSlider() {
+    currentHeight = slider.value;
+}
 
 class RGB {
     constructor(red, green, blue) {
@@ -111,19 +146,12 @@ function drawOneColorredColumn(x, y, height, color) {
     drawOneColumn(x, y, height);
 }
 
-function initCanvas() {
-    canvas.width = canvas.clientWidth;
-    canvas.height = canvas.clientHeight;
-    console.log(canvas.width);
+function drawGradient() {
+    pen.clearRect(0, 0, canvas.width, canvas.height);
+    if (checkIfSliderChanged) {
+        updateHeightToSlider();
+    }
 
-    pen.lineWidth = 2;
-    pen.strokeStyle = "#ffffff";
-}
-
-
-
-function drawGradient(x, y, colors, height, length) {
-    console.log(length);
     let speed = calcSpeedFromHex(colors[0], colors[1], length);
     let current = hexToRGB(colors[0]);
 
@@ -132,16 +160,17 @@ function drawGradient(x, y, colors, height, length) {
 
         let formattedColor = new RGB(current.red, current.green, current.blue);
         formattedColor = formatColor(formattedColor);
-        drawOneColorredColumn(x + i, y, height, rgbToHex(formattedColor));
+        drawOneColorredColumn(x + i, y, currentHeight, rgbToHex(formattedColor));
     }
+
+    requestAnimationFrame(drawGradient);
 }
 
-const height = 50;
-const length = canvas.clientWidth;
+
 
 function main() {
-    initCanvas();
-    drawGradient(0, 0, colors, height, length);
+    initAll();
+    drawGradient(0, 0, colors, currentHeight, length);
 }
 
 main();
