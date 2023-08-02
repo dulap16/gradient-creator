@@ -5,6 +5,26 @@ const pen = canvas.getContext("2d");
 let colors = [];
 colors[0] = "#ff0008";
 colors[1] = "#0022ff";
+const x = 0;
+const y = 0;
+let currentHeight = 50;
+const maxHeight = canvas.clientHeight;
+const length = canvas.clientWidth;
+
+
+
+function initAll() {
+    initCanvas();
+}
+
+function initCanvas() {
+    canvas.width = canvas.clientWidth;
+    canvas.height = canvas.clientHeight;
+
+    pen.lineWidth = 2;
+    pen.strokeStyle = "#ffffff";
+}
+
 
 class RGB {
     constructor(red, green, blue) {
@@ -110,16 +130,6 @@ function drawOneColorredColumn(x, y, height, color) {
     drawOneColumn(x, y, height);
 }
 
-function initCanvas() {
-    canvas.width = canvas.clientWidth;
-    canvas.height = canvas.clientHeight;
-    console.log(canvas.width);
-
-    pen.lineWidth = 2;
-    pen.strokeStyle = "#ffffff";
-}
-
-
 
 function drawGradient(x, y, colors, height, length) {
     console.log(length);
@@ -137,8 +147,8 @@ function drawGradient(x, y, colors, height, length) {
 
 
 function main() {
-    initCanvas();
     drawGradient(0, 0, colors, height, length);
+    initAll();
 }
 
 main();
