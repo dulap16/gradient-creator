@@ -32,6 +32,15 @@ function initSlider() {
     slider.value = currentHeight;
 }
 
+function checkIfSliderChanged() {
+    if (currentHeight != slider.value)
+        return true;
+    return false;
+}
+
+function updateHeightToSlider() {
+    currentHeight = slider.value;
+}
 
 class RGB {
     constructor(red, green, blue) {
