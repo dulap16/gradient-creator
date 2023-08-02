@@ -60,3 +60,17 @@ function rgbToHex(color) {
     return code;
 }
 
+function calcSpeedFromHex(color1, color2, length) {
+    let color1rgb = hexToRGB(color1);
+    let color2rgb = hexToRGB(color2);
+
+    return calcSpeedFromRGB(color1rgb, color2rgb, length);
+}
+
+function calcSpeedFromRGB(color1, color2, length) {
+    let red = (color2.red - color1.red) / length;
+    let green = (color2.green - color1.green) / length;
+    let blue = (color2.blue - color1.blue) / length;
+
+    return new RGB(red, green, blue);
+}
