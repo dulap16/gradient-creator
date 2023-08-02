@@ -143,3 +143,5 @@ function main() {
     initCanvas();
     drawGradient(0, 0, colors, height, length);
 }
+
+main();
