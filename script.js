@@ -5,11 +5,16 @@ const pen = canvas.getContext("2d");
 let colors = [];
 colors[0] = "#ff0008";
 colors[1] = "#0022ff";
+colors[2] = "#83f6ab";
+
+const nrOfColors = colors.length;
 const x = 0;
 const y = 0;
 let currentHeight = 50;
 const maxHeight = canvas.clientHeight;
 const length = canvas.clientWidth;
+
+const individualLength = length / (nrOfColors - 1);
 
 
 
