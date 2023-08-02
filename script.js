@@ -85,3 +85,13 @@ function updateColor(current, speed) {
     return newColor;
 }
 
+function formatColor(color) {
+    let newColor = color;
+    newColor.red = Math.floor(newColor.red);
+    newColor.green = Math.floor(newColor.green);
+    newColor.blue = Math.floor(newColor.blue);
+
+    color = newColor;
+    return newColor;
+}
+
