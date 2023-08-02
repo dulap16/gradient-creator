@@ -25,6 +25,19 @@ body {
     margin: 100px;
 }
 
+#settings-section {
+    margin: 50px 10px;
+    background: gray;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
 #height-slider {
-    margin: 100px;
+    background-color: black;
+}
+
+button {
+    margin: auto;
+    padding: 20px;
 }

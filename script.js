@@ -1,5 +1,6 @@
 const canvas = document.getElementById("canvas");
 const slider = document.getElementById("slider");
+const randomButton = document.getElementById("button");
 const pen = canvas.getContext("2d");
 
 let colors = [];
@@ -10,15 +11,24 @@ colors[3] = "#098ba9";
 colors[4] = "#fa89ec";
 colors[5] = "#ff0008";
 
-const nrOfColors = colors.length;
+let nrOfColors = colors.length;
 const x = 0;
 const y = 0;
 let currentHeight = 50;
 const maxHeight = canvas.clientHeight;
 const length = canvas.clientWidth;
 
-const individualLength = length / (nrOfColors - 1);
+let individualLength = length / (nrOfColors - 1);
 
+class RGB {
+    constructor(red, green, blue) {
+        this.red = red;
+        this.green = green;
+        this.blue = blue;
+    }
+}
+
+document.getElementById("button").addEventListener("click", randomGradient);
 
 function initAll() {
     initCanvas();
@@ -49,13 +59,27 @@ function updateHeightToSlider() {
     currentHeight = slider.value;
 }
 
-class RGB {
-    constructor(red, green, blue) {
-        this.red = red;
-        this.green = green;
-        this.blue = blue;
-    }
+
+function createRandomColorHex() {
+    let rgb = new RGB(Math.random(3) * 255, Math.random(1) * 255, Math.random(2) * 255)
+    rgb = formatColor(rgb);
+
+    return rgbToHex(rgb);
 }
+
+function randomGradient() {
+    console.log("press");
+
+    nrOfColors = Math.floor(Math.random(10) * 5 + 2);
+    colors = [];
+
+    for (let i = 0; i < nrOfColors; i++) {
+        colors[i] = createRandomColorHex();
+    }
+
+    individualLength = length / (nrOfColors - 1);
+}
+
 
 function hexToRGB(hex) {
     let redHex = hex.substr(1, 2);
@@ -152,6 +176,7 @@ function drawOneColorredColumn(x, y, height, color) {
     setPenToColor(color);
     drawOneColumn(x, y, height);
 }
+
 
 function drawGradient() {
     pen.clearRect(0, 0, canvas.width, canvas.height);
