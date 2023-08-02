@@ -37,3 +37,26 @@ function hexColorToInt(hex) {
     return 16 * hexToInt(hex.substr(0, 1)) + hexToInt(hex.substr(1, 1));
 }
 
+function intToHex(nr) {
+    let code = nr + '0'.charCodeAt(0);
+    if (nr >= 10) {
+        code = 'a'.charCodeAt(0) + (nr - 10);
+    }
+
+    return String.fromCharCode(code);
+}
+
+function intToColor(nr) {
+    let code = intToHex(nr / 16);
+    code = code + intToHex(nr % 16);
+
+    return code;
+}
+
+function rgbToHex(color) {
+    let code = "#";
+    code = code + intToColor(color.red) + intToColor(color.green) + intToColor(color.blue);
+
+    return code;
+}
+
