@@ -34,5 +34,10 @@ body {
 }
 
 #height-slider {
-    margin: 100px;
+    background-color: black;
+}
+
+button {
+    margin: auto;
+    padding: 20px;
 }
