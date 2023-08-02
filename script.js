@@ -105,3 +105,9 @@ function drawOneColumn(x, y, height) {
     pen.lineTo(x, y + height);
     pen.stroke();
 }
+
+function drawOneColorredColumn(x, y, height, color) {
+    setPenToColor(color);
+    drawOneColumn(x, y, height);
+}
+
