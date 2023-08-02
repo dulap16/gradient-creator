@@ -6,8 +6,9 @@ let colors = [];
 colors[0] = "#ff0008";
 colors[1] = "#0022ff";
 colors[2] = "#83f6ab";
-colors[3] = "#098br9";
+colors[3] = "#098ba9";
 colors[4] = "#fa89ec";
+colors[5] = "#ff0008";
 
 const nrOfColors = colors.length;
 const x = 0;
@@ -17,7 +18,6 @@ const maxHeight = canvas.clientHeight;
 const length = canvas.clientWidth;
 
 const individualLength = length / (nrOfColors - 1);
-
 
 
 function initAll() {
