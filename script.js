@@ -28,6 +28,8 @@ class RGB {
     }
 }
 
+document.getElementById("button").addEventListener("click", randomGradient);
+
 function initAll() {
     initCanvas();
     initSlider();
