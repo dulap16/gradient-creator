@@ -5,11 +5,16 @@ const pen = canvas.getContext("2d");
 let colors = [];
 colors[0] = "#ff0008";
 colors[1] = "#0022ff";
+colors[2] = "#83f6ab";
+
+const nrOfColors = colors.length;
 const x = 0;
 const y = 0;
 let currentHeight = 50;
 const maxHeight = canvas.clientHeight;
 const length = canvas.clientWidth;
+
+const individualLength = length / (nrOfColors - 1);
 
 
 
@@ -151,16 +156,17 @@ function drawGradient() {
     if (checkIfSliderChanged) {
         updateHeightToSlider();
     }
+    for (let j = 0; j < nrOfColors - 1; j++) {
+        let speed = calcSpeedFromHex(colors[j], colors[j + 1], individualLength);
+        let current = hexToRGB(colors[j]);
 
-    let speed = calcSpeedFromHex(colors[0], colors[1], length);
-    let current = hexToRGB(colors[0]);
+        for (let i = 0; i < individualLength; i++) {
+            current = updateColor(current, speed);
 
-    for (let i = 0; i < length; i++) {
-        current = updateColor(current, speed);
-
-        let formattedColor = new RGB(current.red, current.green, current.blue);
-        formattedColor = formatColor(formattedColor);
-        drawOneColorredColumn(x + i, y, currentHeight, rgbToHex(formattedColor));
+            let formattedColor = new RGB(current.red, current.green, current.blue);
+            formattedColor = formatColor(formattedColor);
+            drawOneColorredColumn(x + i + j * individualLength, y, currentHeight, rgbToHex(formattedColor));
+        }
     }
 
     requestAnimationFrame(drawGradient);
@@ -170,7 +176,7 @@ function drawGradient() {
 
 function main() {
     initAll();
-    drawGradient(0, 0, colors, currentHeight, length);
+    drawGradient();
 }
 
 main();
