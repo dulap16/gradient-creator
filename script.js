@@ -121,3 +121,18 @@ function initCanvas() {
 }
 
 
+
+function drawGradient(x, y, colors, height, length) {
+    console.log(length);
+    let speed = calcSpeedFromHex(colors[0], colors[1], length);
+    let current = hexToRGB(colors[0]);
+
+    for (let i = 0; i < length; i++) {
+        current = updateColor(current, speed);
+
+        let formattedColor = new RGB(current.red, current.green, current.blue);
+        formattedColor = formatColor(formattedColor);
+        drawOneColorredColumn(x + i, y, height, rgbToHex(formattedColor));
+    }
+}
+
