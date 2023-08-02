@@ -136,3 +136,6 @@ function drawGradient(x, y, colors, height, length) {
     }
 }
 
+const height = 50;
+const length = canvas.clientWidth;
+
