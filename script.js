@@ -1,5 +1,6 @@
 const canvas = document.getElementById("canvas");
 const slider = document.getElementById("slider");
+const randomButton = document.getElementById("button");
 const pen = canvas.getContext("2d");
 
 let colors = [];
@@ -54,6 +55,14 @@ function checkIfSliderChanged() {
 
 function updateHeightToSlider() {
     currentHeight = slider.value;
+}
+
+
+function createRandomColorHex() {
+    let rgb = new RGB(Math.random(3) * 255, Math.random(1) * 255, Math.random(2) * 255)
+    rgb = formatColor(rgb);
+
+    return rgbToHex(rgb);
 }
 
     }
