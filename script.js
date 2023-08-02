@@ -74,3 +74,14 @@ function calcSpeedFromRGB(color1, color2, length) {
 
     return new RGB(red, green, blue);
 }
+
+function updateColor(current, speed) {
+    let newColor = current;
+
+    newColor.red = parseFloat((current.red + speed.red).toFixed(8));
+    newColor.green = parseFloat((current.green + speed.green).toFixed(8));
+    newColor.blue = parseFloat((current.blue + speed.blue).toFixed(8));
+
+    return newColor;
+}
+
