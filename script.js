@@ -15,6 +15,7 @@ const length = canvas.clientWidth;
 
 function initAll() {
     initCanvas();
+    initSlider();
 }
 
 function initCanvas() {
@@ -23,6 +24,12 @@ function initCanvas() {
 
     pen.lineWidth = 2;
     pen.strokeStyle = "#ffffff";
+}
+
+function initSlider() {
+    slider.min = 0;
+    slider.max = maxHeight;
+    slider.value = currentHeight;
 }
 
 
