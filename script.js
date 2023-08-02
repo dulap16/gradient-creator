@@ -14,3 +14,26 @@ class RGB {
         this.blue = blue;
     }
 }
+
+function hexToRGB(hex) {
+    let redHex = hex.substr(1, 2);
+    let greenHex = hex.substr(3, 2);
+    let blueHex = hex.substr(5, 2);
+
+    return new RGB(hexColorToInt(redHex), hexColorToInt(greenHex), hexColorToInt(blueHex));
+}
+
+function hexToInt(hex) {
+    let val = hex.charCodeAt(0);
+
+    if (val >= '0'.charCodeAt(0) && val <= '9'.charCodeAt(0))
+        val = val - '0'.charCodeAt(0);
+    else val = val - 'a'.charCodeAt(0) + 10;
+
+    return val;
+}
+
+function hexColorToInt(hex) {
+    return 16 * hexToInt(hex.substr(0, 1)) + hexToInt(hex.substr(1, 1));
+}
+
