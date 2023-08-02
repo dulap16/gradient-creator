@@ -65,7 +65,17 @@ function createRandomColorHex() {
     return rgbToHex(rgb);
 }
 
+function randomGradient() {
+    console.log("press");
+
+    nrOfColors = Math.floor(Math.random(10) * 5 + 2);
+    colors = [];
+
+    for (let i = 0; i < nrOfColors; i++) {
+        colors[i] = createRandomColorHex();
     }
+
+    individualLength = length / (nrOfColors - 1);
 }
 
 
