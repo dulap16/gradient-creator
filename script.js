@@ -99,3 +99,9 @@ function setPenToColor(color) {
     pen.strokeStyle = color;
 }
 
+function drawOneColumn(x, y, height) {
+    pen.beginPath();
+    pen.moveTo(x, y);
+    pen.lineTo(x, y + height);
+    pen.stroke();
+}
