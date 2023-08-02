@@ -176,7 +176,7 @@ function drawGradient() {
 
 function main() {
     initAll();
-    drawGradient(0, 0, colors, currentHeight, length);
+    drawGradient();
 }
 
 main();
