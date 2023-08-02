@@ -156,16 +156,17 @@ function drawGradient() {
     if (checkIfSliderChanged) {
         updateHeightToSlider();
     }
+    for (let j = 0; j < nrOfColors - 1; j++) {
+        let speed = calcSpeedFromHex(colors[j], colors[j + 1], individualLength);
+        let current = hexToRGB(colors[j]);
 
-    let speed = calcSpeedFromHex(colors[0], colors[1], length);
-    let current = hexToRGB(colors[0]);
+        for (let i = 0; i < individualLength; i++) {
+            current = updateColor(current, speed);
 
-    for (let i = 0; i < length; i++) {
-        current = updateColor(current, speed);
-
-        let formattedColor = new RGB(current.red, current.green, current.blue);
-        formattedColor = formatColor(formattedColor);
-        drawOneColorredColumn(x + i, y, currentHeight, rgbToHex(formattedColor));
+            let formattedColor = new RGB(current.red, current.green, current.blue);
+            formattedColor = formatColor(formattedColor);
+            drawOneColorredColumn(x + i + j * individualLength, y, currentHeight, rgbToHex(formattedColor));
+        }
     }
 
     requestAnimationFrame(drawGradient);
