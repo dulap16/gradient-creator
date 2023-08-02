@@ -111,3 +111,13 @@ function drawOneColorredColumn(x, y, height, color) {
     drawOneColumn(x, y, height);
 }
 
+function initCanvas() {
+    canvas.width = canvas.clientWidth;
+    canvas.height = canvas.clientHeight;
+    console.log(canvas.width);
+
+    pen.lineWidth = 2;
+    pen.strokeStyle = "#ffffff";
+}
+
+
