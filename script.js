@@ -1,7 +1,6 @@
 const canvas = document.getElementById("canvas");
-const gradientPlaceholder = document.getElementById("gradient");
+const slider = document.getElementById("slider");
 const pen = canvas.getContext("2d");
-const gradientPos = gradientPlaceholder.getClientRects();
 
 let colors = [];
 colors[0] = "#ff0008";
@@ -136,8 +135,6 @@ function drawGradient(x, y, colors, height, length) {
     }
 }
 
-const height = 50;
-const length = canvas.clientWidth;
 
 function main() {
     initCanvas();
